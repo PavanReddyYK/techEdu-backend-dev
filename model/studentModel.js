@@ -56,7 +56,7 @@ const studentSchema = new Schema({
         minLength: [4,"password should be minimum of 4 characters"],
         required : true,
     }
-})
+},{timestamps:true})
 
 
 const studentModel = model('student',studentSchema)

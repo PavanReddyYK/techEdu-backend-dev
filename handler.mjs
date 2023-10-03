@@ -16,23 +16,25 @@ app.use(cors());
 import studentRouter from './routes/studentRoutes.mjs'; // Import the router using ES module syntax
 app.use('/v1/student/', studentRouter)
 
+import teacherRouter from './routes/teacherRoutes.mjs'
+app.use('/v1/teacher', teacherRouter)
 
-//! Page not found middleware
+import userRouter from './routes/userRoutes.mjs'
+app.use('/v1/user', userRouter)
+
+
 app.use("*",(req,res,next)=>{
     res.status(404).json({error:true,message:"Page Not Found!!!"})
 })
 
-// ! Error Handling Middleware
 app.use( (err,req,res,next)=>{
     res.status(400).json({error:true,message:err.message,data:"ok"})
 } )
-// ! ---------------Server------------------
+
+
 app.set('port',process.env.REACT_APP_PORT)
 const server = http.createServer(app)
 
 server.listen(app.get('port'),"0.0.0.0",()=>{
     console.log(`Express server listening on http://localhost:${app.get('port')}`)
 });
-
-
-

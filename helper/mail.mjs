@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 
-const org_mail = process.env.REACT_APP_EMAIL_ID;
-const app_name = process.env.REACT_APP_NAME;
+const org_mail = process.env.REACT_APP_EMAIL_ID
+const app_name = process.env.REACT_APP_NAME
 const transporter = nodemailer.createTransport({
   service: "Gmail",
   auth: {
@@ -28,3 +28,15 @@ export const inviteMail = (name, email) => {
     }
   });
 };
+
+
+export const sendOtp=async (email,otp,name)=>
+{
+    let mailOptions={
+        from:process.env.REACT_APP_EMAIL_ID,
+        to:email,
+        subject:"OTP Mail",
+        html:`<h1>Hi ${name}, Your OTP for ${app_name} Application is ${otp}</h1>`
+    }
+    transporter.sendMail(mailOptions, ()=>{console.log("OTP Sent Successfully")})
+}

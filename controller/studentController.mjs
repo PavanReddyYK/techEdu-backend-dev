@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import { getDecryptPassword, getEncryptPassword } from "../helper/helper.js";
-import { inviteMail } from "../helper/mail.js";
+import { getDecryptPassword, getEncryptPassword } from "../helper/helper.mjs";
+import { inviteMail } from "../helper/mail.mjs";
 import studentModel from "../model/studentModel.js";
 
 export const addStudent = async (req, res, next) => {
